@@ -60,7 +60,7 @@
                     <p class="" style="margin: auto;font-size:35px;margin:auto;color: #f3ececf0;">{{ lettere }}</p>
                   </span>
   </div>
-<!--  <img *ngIf="authService.isAuthService && !authService.roles.includes('ADMIN') && !logo " src="./assets/images/user.png" class="user-pic"  (click)="toggleMenu()">-->
+  <!--  <img *ngIf="authService.isAuthService && !authService.roles.includes('ADMIN') && !logo " src="./assets/images/user.png" class="user-pic"  (click)="toggleMenu()">-->
   <img  *ngIf="authService.isAuthService && !authService.roles.includes('ADMIN') && logo" class="user-pic"  [src]="logo"  (click)="toggleMenu()">
 </mat-toolbar>
 
@@ -168,8 +168,15 @@
           <div  class="sub-menu bg-light">
             <div class="user-info">
 
-              <img *ngIf="logo" [src]="logo">
-              <h2>{{this.authService.username}}</h2>
+              <div class="user-info">
+                <div *ngIf="authService.isAuthService && !authService.roles.includes('ADMIN') && !logo "  >
+                  <span class="image" >
+                    <p class="" style="margin: auto;font-size:35px;margin:auto;color: #f3ececf0;">{{ lettere }}</p>
+                  </span>
+                </div>
+                <img *ngIf="logo" [src]="logo">
+                <h2 style="font: 500 20px / 32px Roboto, sans-serif;letter-spacing: .0125em;margin: 4px 9px 2px;">{{this.authService.username}}</h2>
+              </div>
             </div>
             <hr>
 
