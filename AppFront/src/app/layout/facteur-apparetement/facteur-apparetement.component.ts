@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Appartement} from "../../sahred/model/appartemetModel/appartement.model";
 import {AppartemetService} from "../../sahred/service/appartemetService/appartemet.service";
 import {DatePipe} from "@angular/common";
@@ -30,10 +30,13 @@ export class FacteurApparetementComponent implements OnInit {
   tableauDate: any;
   days: string[] = [];
   display = false;
+  display2 = false;
+
 
   constructor(private elementRef: ElementRef, private reservationService: ReservationService,
               private route: ActivatedRoute, private appartementService: AppartemetService,
-              private datePipe: DatePipe,private authService:AuthService, private notifiactionService:NotifiactionService) {
+              private datePipe: DatePipe,private authService:AuthService, private notifiactionService:NotifiactionService
+              ,private router : Router) {
   }
 
   ngOnInit(): void {
@@ -288,46 +291,52 @@ export class FacteurApparetementComponent implements OnInit {
 
 
   handlReserve(){
-    console.log(this.maDate2, 'yyyy-MM-dd')
-    console.log(this.maDate, 'yyyy-MM-dd')
-    this.item.dateFin=this.datePipe.transform(this.maDate2, 'yyyy-MM-dd')!;
-    this.item.dateDebut=this.datePipe.transform(this.maDate, 'yyyy-MM-dd')!;
+    if(this.authService.isAuthService) {
+      console.log(this.maDate2, 'yyyy-MM-dd')
+      console.log(this.maDate, 'yyyy-MM-dd')
+      this.item.dateFin = this.datePipe.transform(this.maDate2, 'yyyy-MM-dd')!;
+      this.item.dateDebut = this.datePipe.transform(this.maDate, 'yyyy-MM-dd')!;
 
-    this.item.ref=this.generateRandomCode(4);
-    this.item.appartement.id = this.apparetement.id;
-    this.item.appartement.code = this.apparetement.code;
-    this.item.appartement.wifi = this.apparetement.wifi;
-    this.item.appartement.climatiseur = this.apparetement.climatiseur;
-    this.item.appartement.loyerMensuel = this.apparetement.loyerMensuel;
-    this.item.appartement.superficie = this.apparetement.superficie;
-    this.item.appartement.ville = this.apparetement.ville;
-    this.item.appartement.adresse = this.apparetement.adresse;
-    this.item.appartement.nmbrPersont = this.apparetement.nmbrPersont;
-    this.item.appartement.images = this.apparetement.images;
-    this.item.appartement.nmbrPersont = this.apparetement.nmbrPersont;
+      this.item.ref = this.generateRandomCode(4);
+      this.item.appartement.id = this.apparetement.id;
+      this.item.appartement.code = this.apparetement.code;
+      this.item.appartement.wifi = this.apparetement.wifi;
+      this.item.appartement.climatiseur = this.apparetement.climatiseur;
+      this.item.appartement.loyerMensuel = this.apparetement.loyerMensuel;
+      this.item.appartement.superficie = this.apparetement.superficie;
+      this.item.appartement.ville = this.apparetement.ville;
+      this.item.appartement.adresse = this.apparetement.adresse;
+      this.item.appartement.nmbrPersont = this.apparetement.nmbrPersont;
+      this.item.appartement.images = this.apparetement.images;
+      this.item.appartement.nmbrPersont = this.apparetement.nmbrPersont;
 
-    this.item.client.nom =this.authService.dataUtilisateur.nom;
-    this.item.client.cin =this.authService.dataUtilisateur.cin;
-    this.item.client.numTeleClient =this.authService.dataUtilisateur.numTeleClient;
-    this.item.client.email_Client =this.authService.dataUtilisateur.email_Client;
-    this.item.client.prenom =this.authService.dataUtilisateur.prenom;
-    // this.item.client.id =this.authService.dataUtilisateur.id;
-    console.log("this.item")
-    console.log(this.item)
-    this.saveObject();
-    console.log("this.authService.client.cin===>"+this.authService.dataUtilisateur.cin)
-    // console.log("this.authService.client.id===>"+this.authService.client.id)
-    console.log("this.authService.dataUtilisateur.id===>"+this.authService.dataUtilisateur.id)
-    //notifiacation :
-    this.nItem.code =  this.generateRandomCode(5);
-    this.nItem.dateFinReservation=this.datePipe.transform(this.maDate2, 'yyyy-MM-dd')!;
-    this.nItem.dateDebutReservation=this.datePipe.transform(this.maDate, 'yyyy-MM-dd')!;
-    this.nItem.codeAppartement = this.apparetement.code;
-    this.nItem.cinClient = this.authService.dataUtilisateur.cin;
-    this.nItem.nomClient=this.authService.dataUtilisateur.nom;
-    this.nItem.iceAgence=this.apparetement.propAppartemenetDto.iceAgApp;
-    this.nItem.refReservation=this.item.ref;
-    this.NotificationSave();
+      this.item.client.nom = this.authService.dataUtilisateur.nom;
+      this.item.client.cin = this.authService.dataUtilisateur.cin;
+      this.item.client.numTeleClient = this.authService.dataUtilisateur.numTeleClient;
+      this.item.client.email_Client = this.authService.dataUtilisateur.email_Client;
+      this.item.client.prenom = this.authService.dataUtilisateur.prenom;
+      // this.item.client.id =this.authService.dataUtilisateur.id;
+      console.log("this.item")
+      console.log(this.item)
+      this.saveObject();
+      console.log("this.authService.client.cin===>" + this.authService.dataUtilisateur.cin)
+      // console.log("this.authService.client.id===>"+this.authService.client.id)
+      console.log("this.authService.dataUtilisateur.id===>" + this.authService.dataUtilisateur.id)
+      //notifiacation :
+      this.nItem.code = this.generateRandomCode(5);
+      this.nItem.dateFinReservation = this.datePipe.transform(this.maDate2, 'yyyy-MM-dd')!;
+      this.nItem.dateDebutReservation = this.datePipe.transform(this.maDate, 'yyyy-MM-dd')!;
+      this.nItem.codeAppartement = this.apparetement.code;
+      this.nItem.cinClient = this.authService.dataUtilisateur.cin;
+      this.nItem.nomClient = this.authService.dataUtilisateur.nom;
+      this.nItem.iceAgence = this.apparetement.propAppartemenetDto.iceAgApp;
+      this.nItem.refReservation = this.item.ref;
+      this.NotificationSave();
+    }
+    else{
+      this.display2=true
+      // this.router.navigateByUrl("/login")
+    }
   }
 
 
@@ -367,5 +376,8 @@ export class FacteurApparetementComponent implements OnInit {
   set nItems(value: Array<Notifiaction>) {
     this.notifiactionService.items = value;
   }
-}
 
+  anuller() {
+    this.display2=false;
+  }
+}

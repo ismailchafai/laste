@@ -53,6 +53,13 @@ public class Config extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
+
+
+                .antMatchers(HttpMethod.POST, "/api/notification/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/notification/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/notification/**").permitAll()
+
+
                 .antMatchers(
                         HttpMethod.GET,
                         "/api/categoriesAppartemen/public",
@@ -64,6 +71,12 @@ public class Config extends WebSecurityConfigurerAdapter {
                         "/api/safarent/manager/reservation/reservationByVoiture/matricule/**",
                         "/api/appartement/code/**",
 
+                        "/api/safarent/manager/reservation/**",
+                        "/api/appartement/public/code/**",
+                        "/api/appartement/public/**",
+                        "/api/safarent/manager/voiture/public/**",
+                        "/api/safarent/manager/reservation/reservationByAppartement/public/code/**",
+                        "/api/safarent/manager/reservation/reservationByVoiture/public/matricule/**",
 
                         "/user",
                         "/api/client/**",

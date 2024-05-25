@@ -58,11 +58,11 @@ public class ReservationWs {
     public ReservationDto findByLocationsRef(@PathVariable String ref) {
         return converter.toDto(reservationService.findByLocationsRef(ref));
     }
-    @GetMapping("reservationByAppartement/code/{code}")
+    @GetMapping("reservationByAppartement/public/code/{code}")
     public List<ReservationDto> findReservationByAppartementCode(@PathVariable String code) {
         return converter.toDto(reservationService.findReservationByAppartementCode(code));
     }
-    @GetMapping("reservationByVoiture/matricule/{matricule}")
+    @GetMapping("reservationByVoiture/public/matricule/{matricule}")
     public List<ReservationDto> findReservationByVoitureMatricule(@PathVariable String matricule) {
         return converter.toDto(reservationService.findReservationByVoitureMatricule(matricule));
     }

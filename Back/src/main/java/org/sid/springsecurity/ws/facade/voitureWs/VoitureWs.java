@@ -40,7 +40,7 @@ public class VoitureWs {
         return converter.toDto(voitureService.findAll());
     }
 
-    @GetMapping("matricule/{Matricule}")
+    @GetMapping("public/matricule/{Matricule}")
     public VoitureDto findByMatricule(@PathVariable String Matricule) {
         return converter.toDto(voitureService.findByMatricule(Matricule));
     }

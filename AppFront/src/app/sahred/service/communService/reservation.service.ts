@@ -36,11 +36,11 @@ public getByRef(ref: String): Observable<Reservation> {
   }
 
   public findReservationbyVoitureMatricule(matiricule:string):Observable<Array<Reservation>>{
-    return this.http.get<Array<Reservation>>(`${this.url}reservationByVoiture/matricule/${matiricule}`)
+    return this.http.get<Array<Reservation>>(`${this.url}reservationByVoiture/public/matricule/${matiricule}`)
   }
 
   public findReservationbyAppCode(code:string):Observable<Array<Reservation>>{
-    return this.http.get<Array<Reservation>>(`${this.url}reservationByAppartement/code/${code}`)
+    return this.http.get<Array<Reservation>>(`${this.url}reservationByAppartement/public/code/${code}`)
   }
 
 

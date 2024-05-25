@@ -105,7 +105,7 @@ public class AppartementWs {
         return appartementConverter.toDto(appartementService.findByAgenceAppartementIceAgApp(iceAgApp));
     }
 
-    @GetMapping("code/{code}")
+    @GetMapping("public/code/{code}")
     public AppartementDto findByCode(@PathVariable String code) {
         return appartementConverter.toDto(appartementService.findByCode(code));
     }

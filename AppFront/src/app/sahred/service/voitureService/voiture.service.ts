@@ -26,7 +26,7 @@ export class VoitureService {
     return this.http.delete<number>(`${this.url}matricule/${matricule}`);
   }
   get(matricul: string):Observable<Voiture> {
-    return this.http.get<Voiture>(`http://localhost:8085/api/safarent/manager/voiture/matricule/${matricul}`);
+    return this.http.get<Voiture>(`http://localhost:8085/api/safarent/manager/voiture/public/matricule/${matricul}`);
   }
 
 
