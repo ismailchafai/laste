@@ -29,26 +29,26 @@
               </div>
 
               <div class="content">
-                <h2>Économique</h2>
-                <p>Peugeot e-208 ou similaire</p>
+                <h2>{{ voitureData.nomModele }}</h2>
+
 
                 <div class="grid-container">
 
                   <div><i class="bi bi-person-fill"></i> <span>{{ voitureData.nbrPlace }} passagers</span></div>
 
-                  <div><i class="bi bi-slack"></i><span>Climatisation</span></div>
-
-                  <div> <i class="bi bi-terminal-fill"><a>portes</a></i></div>
-                  <div> <i class="bi bi-terminal-fill"><a>Automatique</a></i></div>
-                  <div> <i class="bi bi-terminal-fill"><a>Kilométrage {{voitureData.kiloMetrage}}</a></i></div>
+                  <div><i class="fa fa-bolt"></i><span>Puissance: {{ voitureData.puissance }}</span></div>
+                  <div><i class="	fa fa-eyedropper"></i><span>Couleur: {{ voitureData.couleur }}</span></div>
+                  <div><i class="fa fa-car"></i><span>Carburant: {{ voitureData.Carburant }}</span></div>
+                  <div> <i class="fa fa-tachometer"><a>Boite vitesse: {{ voitureData.boitevitesse }}</a></i></div>
+                  <div> <i class="fa fa-line-chart"><a>Kelométrage: {{voitureData.kiloMetrage}} Km</a></i></div>
 
 
                 </div>
               </div>
               <hr>
               <div class="card-body">
-                <h1 class="content">${{voitureData.prix}}</h1>
-                <span style="font-size: 13px;">per day</span>
+                <h1 class="content">{{voitureData.prix}} DH</h1>
+                <span style="font-size: 13px;"> Par jour </span>
                 <div style="line-height: 13px;">
                   <p class="text-success">Free cancellation</p>
                   <p>Pay at pick-up</p>
