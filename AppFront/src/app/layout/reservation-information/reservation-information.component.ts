@@ -1,8 +1,7 @@
-import { Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import {AuthService} from "../../security/serviceAuth/auth.service";
-import {ActivatedRoute, Router} from "@angular/router";
 import {Client} from "../../sahred/model/communModel/client.model";
 import {ClientService} from "../../sahred/service/communService/client.service";
 import {VoitureService} from "../../sahred/service/voitureService/voiture.service";
@@ -13,6 +12,7 @@ import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 import {DatePipe} from "@angular/common";
 import {NotifiactionService} from "../../sahred/service/notificationService/notifiaction.service";
 import {Notifiaction} from "../../sahred/model/notificationModel/notifiaction.model";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 
@@ -61,11 +61,19 @@ export class ReservationInformationComponent  implements OnInit{
     this.getVoitureByMatricule();
     this.getReseravtionbyMatricule()
   }
+  public voitureDataImages:any;
+
+  returnUrl(voiture:any):string{
+    console.log("verifier data:::")
+    console.log(this.voitureDataImages)
+    return voiture.imagePaths[0]
+  }
 
   getVoitureByMatricule(){
     this.voitureService.get(this.matricule).subscribe({
       next:data=>{
         this.voitureData=data ;
+        this.voitureDataImages=data;
         console.log(data)
       },
       error:err=>{console.log(err)}
@@ -409,9 +417,8 @@ export class ReservationInformationComponent  implements OnInit{
   set nItems(value: Array<Notifiaction>) {
     this.notifiactionService.items = value;
   }
-
-  returnUrl(voitureData: any) {
-    return voitureData.imagePaths[0]
+  navigateToHome(){
+    this.router.navigateByUrl("/home")
   }
 
 
