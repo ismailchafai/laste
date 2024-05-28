@@ -51,6 +51,7 @@ import {NotificationComponent} from "./view/notification/notification.component"
 import {ChartsAppartementComponent} from "./layout/charts-appartement/charts-appartement.component";
 import {ChartsComponent} from "./layout/charts/charts.component";
 import {HomeChartsComponent} from "./layout/home-charts/home-charts.component";
+import {ChatComponent} from "./layout/chat/chat.component";
 const routes: Routes = [
   { path: "home", component:HomeComponent},
   { path :"login", component : LoginComponent},
