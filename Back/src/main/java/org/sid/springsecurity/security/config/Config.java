@@ -87,6 +87,18 @@ public class Config extends WebSecurityConfigurerAdapter {
                         "/login/",
                         "/user/"
                 ).permitAll()
+                .antMatchers(HttpMethod.POST, "/api/client/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/client/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/client/**").permitAll()
+
+                .antMatchers(HttpMethod.POST, "/api/agenceLocation/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/agenceLocation/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/agenceLocation/**").permitAll()
+
+                .antMatchers(HttpMethod.POST, "/api/agenceAppartement/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/agenceAppartement/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/agenceAppartement/**").permitAll()
+                .antMatchers( "/refreshToken/", "/login/", "/user/").permitAll()
 //                .antMatchers(HttpMethod.GET, "/api/appartement/listAppartementCategories/{category}").permitAll()
 //                .antMatchers(HttpMethod.GET, "/api/safarent/manager/voiture/CategorieVoitureLibelle/{libelle}").permitAll()
 //                .antMatchers(HttpMethod.GET, "/api/safarent/manager/reservation/reservationByVoiture/matricule/{matricule}").permitAll()
