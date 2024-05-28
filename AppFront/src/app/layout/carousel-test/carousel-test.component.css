@@ -147,6 +147,7 @@
 }
 .card:hover {
   transform: translateY(-10px);
+  background: #b6b4b4;
 }
 card[_ngcontent-ng-c1606768246]::before {
   content: "";
@@ -180,6 +181,7 @@ card[_ngcontent-ng-c1606768246]::before {
   opacity: 0;
   transform: translateY(30px);
   transition: 0.5s all;
+
 }
 .card:hover .info {
   opacity: 1;

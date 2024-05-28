@@ -447,10 +447,19 @@
 
 
 
-.titre{
-  position: relative;
-  top: 7rem;
-  left: 2rem;
-  color: white;
-}
+
+
+  .titre{
+    position: relative;
+    top: 7rem;
+    left: 2rem;
+    color: white;
+  }
+.title{
+    position: relative;
+    top: 7rem;
+    left: -22rem;
+    color: black;
+  }
+
 

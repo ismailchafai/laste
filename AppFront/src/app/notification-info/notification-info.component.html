@@ -29,7 +29,7 @@
     <div class="alert alert-success d-flex align-items-center" role="alert">
       <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
       <div>
-        La confermation success
+        confirmation réussie
       </div>
     </div>
 
@@ -50,7 +50,7 @@
     <div class="alert alert-danger d-flex align-items-center" role="alert">
       <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
       <div>
-        La rejection success
+        La rejection réussie
       </div>
     </div>
 
@@ -72,9 +72,9 @@
     padding: 0.5rem;
     margin-left: 4rem; ">
                     <p  style="font-size: 15px;line-height: 24px;">
-                        appartment de code <strong *ngIf="item.iceAgence!=null">{{item.iceAgence}}</strong>
+                        appartment de Code <strong *ngIf="item.iceAgence!=null">{{item.iceAgence}}</strong>
                         <strong *ngIf="item.cinPropAppartement!=null">{{item.cinPropAppartement}}</strong>
-                        est  rserver <br> par le client de cin {{item.cinClient}}
+                        est  reserver <br> par le client de Cin {{item.cinClient}}
                     </p>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                 <img src="./assets/images/user.png" alt="avatar" style="width: 46px;border-radius: 50%;height: 50px;" />
                 <div style="    margin-left: 8px;">
                     <p  style="font-size: 15px;line-height: 24px;">
-                        appartment de code <strong>{{e.codeAppartement}}</strong>
+                        Appartment de code <strong>{{e.codeAppartement}}</strong>
                         est  rserver <br> par le client de cin {{e.cinClient}}
                     </p>
                     <div style="display: inline-block;position: relative;left: 219px;top: -19px;">
@@ -107,8 +107,8 @@
                 <img src="./assets/images/user.png" alt="avatar" style="width: 46px;border-radius: 50%;height: 50px;"/>
                 <div  style="margin-left: 8px;">
                     <p style="font-size: 15px;line-height: 24px;">
-                        voiture de matricule <strong>{{e.matriculeVoiture}}</strong>
-                        est <br>  rserver  par le client de cin
+                        Voiture de matricule <strong>{{e.matriculeVoiture}}</strong>
+                        est <br>  rserver  par le client de Cin
                         {{e.cinClient}}
                     </p>
                     <div style="display: inline-block;position: relative;left: 219px;top: -19px;">
@@ -173,15 +173,15 @@
 
     <div *ngIf="authService.roles.includes('MANAGER-APT')||authService.roles.includes('MANAGER-VOI')" style="display:flex;justify-content: space-around">
         <div>
-            <p>Nome de client : {{dataClientByCin.nom}}</p>
-            <p>Prenome de client : {{dataClientByCin.prenom}}</p>
+            <p>Nom Client : {{dataClientByCin.nom}}</p>
+            <p>Prenom Client : {{dataClientByCin.prenom}}</p>
 
             <p *ngIf="authService.roles.includes('MANAGER-APT')">L'adresse de l'apparetement : {{dataApparetementByCode.adresse}}</p>
             <p *ngIf="authService.roles.includes('MANAGER-APT')">Prix de L'apparetement :{{dataApparetementByCode.loyerMensuel}}$</p>
 
-            <p *ngIf="authService.roles.includes('MANAGER-VOI')">Prix de L'voiture :{{dataVoitureByMatricue.prix}}$</p>
+            <p *ngIf="authService.roles.includes('MANAGER-VOI')">Prix de voiture :{{dataVoitureByMatricue.prix}}$</p>
 
-            <p>Nomber des Joures de reservation : {{numberJoures}} Jours</p>
+            <p>Nombre de Joure de reservation : {{numberJoures}} Jours</p>
         </div>
       <div><div class="modal fade m-auto" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="height: 400px; width: 720px;">
         <div class="modal-dialog">
@@ -287,9 +287,9 @@
 
         <div *ngIf="authService.roles.includes('MANAGER-APT')||authService.roles.includes('MANAGER-VOI')">
 <!--            <button *ngIf="reseirvationBollean && !dataAgence.confermer" type="button" class="btn btn-outline-danger btn-sm mx-2" (click)="deleteReservationByRef()">Reject</button>-->
-            <button *ngIf="reseirvationBollean && !dataAgence.confermer" type="button" class="btn btn-outline-danger btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Reject</button>
+            <button *ngIf="reseirvationBollean && !dataAgence.confermer" type="button" class="btn btn-outline-danger btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Rejeter</button>
             <!--    <button  class="btn btn-outline-danger btn-sm mx-2" (click)="deleteReservationByRef()">Reject</button>-->
-            <button *ngIf="reseirvationBollean && !dataAgence.confermer" class="btn btn-outline-success btn-sm mx-2"  data-bs-toggle="modal" data-bs-target="#confirmationModal">Confermet</button>
+            <button *ngIf="reseirvationBollean && !dataAgence.confermer" class="btn btn-outline-success btn-sm mx-2"  data-bs-toggle="modal" data-bs-target="#confirmationModal">Confirmer</button>
         </div>
         <div *ngIf="authService.roles=='USER' && notifiactionSelectionner.confermer==true ">
             si vous voulez d'annuler la location cliquer sur annuler

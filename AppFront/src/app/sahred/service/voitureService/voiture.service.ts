@@ -58,6 +58,9 @@ export class VoitureService {
   findVoitureByModele(model:string):Observable<Array<Voiture>>{
     return this.http.get<Array<Voiture>>(`${this.url}nameModele/${model}`)
   }
+  findByVille(ville:string):Observable<Array<Voiture>>{
+      return this.http.get<Array<Voiture>>(`${this.url}ville/${ville}`)
+  }
   get item(): Voiture {
     return this._item;
   }

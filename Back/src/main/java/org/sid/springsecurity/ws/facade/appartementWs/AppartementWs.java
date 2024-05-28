@@ -33,26 +33,26 @@ public class AppartementWs {
     }
 
 
-    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public @ResponseBody int save(@RequestPart("apartment") AppartementDto appartementDto,
-                                  @RequestPart("imageFile") MultipartFile[] files) {
-        try {
-            Appartement appartement = appartementConverter.toBean(appartementDto);
-            Set<String> fileUrls = converterImage.uploadImages(files);
-            appartement.setImagePaths(fileUrls);
-            return appartementService.save(appartement);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return -99;
+        @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+        public @ResponseBody int save(@RequestPart("apartment") AppartementDto appartementDto,
+                                      @RequestPart("imageFile") MultipartFile[] files) {
+            try {
+                Appartement appartement = appartementConverter.toBean(appartementDto);
+                Set<String> fileUrls = converterImage.uploadImages(files);
+                appartement.setImagePaths(fileUrls);
+                return appartementService.save(appartement);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return -99;
+            }
         }
-    }
 
 
-    @DeleteMapping("/images/cloudinary/{imageUrl}")
-    public void deleteImage(@PathVariable String imageUrl) throws IOException {
-        String fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
-        cloudinary.uploader().destroy(fileName, ObjectUtils.emptyMap());
-    }
+        @DeleteMapping("/images/cloudinary/{imageUrl}")
+        public void deleteImage(@PathVariable String imageUrl) throws IOException {
+            String fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
+            cloudinary.uploader().destroy(fileName, ObjectUtils.emptyMap());
+        }
 
 
 //

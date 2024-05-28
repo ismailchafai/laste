@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {Voiture} from "../../sahred/model/voitureModel/voiture.model";
 import {CategoriesAppartement} from "../../sahred/model/appartemetModel/categories-appartement.model";
 import {Appartement} from "../../sahred/model/appartemetModel/appartement.model";
@@ -16,6 +16,7 @@ import {villesMaroc} from "../constant-app/villes-maroc.module";
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit,AfterViewInit{
+  lastClicked: HTMLElement | null = null;
 
   // Variale
   public obejetClicked:boolean=true;
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit,AfterViewInit{
   public  categorievoitSelected: string="";
   protected modeles!: any[];
   protected modeleSelcted:string="";
+  public selecCategorieVoi:any;
   // Variable Apparetement
   public dataCategorieApartement:Array<CategoriesAppartement>=new Array<CategoriesAppartement>();
   public dataApartement:any[]=[];
@@ -43,7 +45,7 @@ export class HomeComponent implements OnInit,AfterViewInit{
 
   constructor(private voitureService:VoitureService , private categoreieappartemetService:CategoriesAppartementService ,
               private apartement:AppartemetService,private router:Router, private categorievoitservice:CategorieVoitureService,
-              private appartemetService:AppartemetService) {
+              private appartemetService:AppartemetService,private elementRef: ElementRef ,private renderer: Renderer2) {
   }
 
 
@@ -52,8 +54,11 @@ export class HomeComponent implements OnInit,AfterViewInit{
     this.getAllCategoriesApt();
     this.getAllApartement();
     this.getAllCategorie();
+    this.getville();
+
   }
   ngAfterViewInit() {
+  
 
   }
 
@@ -117,7 +122,7 @@ export class HomeComponent implements OnInit,AfterViewInit{
     }
   }
   villes = villesMaroc;
-  villSelected!:string;
+  villSelected:string="" ;
 
 
 
@@ -134,6 +139,16 @@ export class HomeComponent implements OnInit,AfterViewInit{
   }
   public clicApp() {
     this.obejetClicked=false;
+  }
+  handleClick(id: string) {
+    // this.toggleHoverEffect(id);
+    this.scrollTo(id);
+  }
+  scrollTo(id: string) {
+    const element = this.elementRef.nativeElement.querySelector(`#${id}`);
+    if (element) {
+      element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    }
   }
 
   handelVertical() {
@@ -207,6 +222,11 @@ export class HomeComponent implements OnInit,AfterViewInit{
   extractModeleNames(): void {
     this.modeles = Array.from(new Set(this.listeVoiture.map(voiture => voiture.nomModele)));
   }
+
+  public getville(){
+    if( this.villSelected!=""){
+      this.dataVoiture = this.dataVoiture.filter(voitureService => voitureService.ville === this.villSelected);
+    } }
 
 //+++++++++++++++++++++++++++++++++APP+++++++++++++++++++++++++++++++++
 
@@ -284,6 +304,25 @@ export class HomeComponent implements OnInit,AfterViewInit{
   returnUrl(appartemet: any):string {
     return appartemet.imagePaths[0]
   }
+  toggleHoverEffect(element: EventTarget | null) {
+    if (element instanceof HTMLElement) {
+      // Supprimer le style de survol de l'élément précédemment cliqué
+      if (this.lastClicked !== null) {
+        this.lastClicked.style.borderBottom = "none";
+        this.lastClicked.style.cursor = "default";
+      }
+
+      // Appliquer le style de survol à l'élément actuellement cliqué
+      element.style.borderBottom = "2px solid blue";
+      element.style.cursor = "pointer";
+
+      // Enregistrer l'élément actuellement cliqué
+      this.lastClicked = element;
+    }
+  }
+
+
+
 }
 
 
