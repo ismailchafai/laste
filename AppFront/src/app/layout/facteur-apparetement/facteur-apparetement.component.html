@@ -13,31 +13,36 @@
         </li>
         <li class="nav-item" (click)="handleClick('Conditions')" (click)="toggleHoverEffect($event.target)">
           Conditions</li>
+        <li>
+<!--          <button (click)="handleMessage()">click me</button>-->
+        </li>
       </ul>
     </div>
-
     <div class="container-fluid">
       <div class="row">
-        <div class="col-7 m-0">
-
+        <div class="col-lg-7 col-md-12 m-0">
           <div class="card cardOne" id="Apercu">
             <div class="card-body">
-              <span style="display: block;">Électrique</span>
-
-
-              <div class="photo">
-                <img src={{returnUrl(apparetement)}} alt="" style="max-height: 140px;max-width: 240px;">              </div>
-
-              <div class="content">
-                <h2>categoreie</h2>
-                <p>adress:{{apparetement.adresse}}</p>
-                <div class="grid-container">
-                  <div><i class="bi bi-person-fill"></i> <span>supreficie: {{apparetement.superficie}} m<sup>2</sup></span></div>
-                  <div><i class="bi bi-slack"></i><span>Climatisation:{{apparetement.climatiseur}}</span></div>
-                  <div> <i class="bi bi-terminal-fill"><a>pour {{apparetement.nmbrPersont}} persone</a></i></div>
-                  <div *ngIf="apparetement.wifi=='oui'"> <i class="bi bi-terminal-fill"><a>avec wifi</a></i></div>
-                </div>
-              </div>
+              <div class="row">                  
+                  <div class="col-lg-9 col-md-12">
+                    <div class="content">
+                      <h2>categoreie</h2>
+                      <p>adress:{{apparetement.adresse}}</p>
+                      <div class="grid-container">
+                        <div><i class="bi bi-person-fill"></i> <span>supreficie: {{apparetement.superficie}} m<sup>2</sup></span></div>
+                        <div><i class="bi bi-slack"></i><span>Climatisation:{{apparetement.climatiseur}}</span></div>
+                        <div> <i class="bi bi-terminal-fill"><a>pour {{apparetement.nmbrPersont}} persone</a></i></div>
+                        <div *ngIf="apparetement.wifi=='oui'"> <i class="bi bi-terminal-fill"><a>avec wifi</a></i></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-12">
+                    <div class="photo">
+                    <img src={{returnUrl(apparetement)}} alt="" style="max-height: 140px">             
+                    </div>                  
+                  </div>
+              </div>              
+              
               <hr>
               <div class="card-body">
                 <h1 class="content">${{apparetement.loyerMensuel}}</h1>
@@ -50,8 +55,6 @@
               </div>
             </div>
           </div>
-
-
           <div class="card cardTree" id="Location" >
             <div class="card-body">
               <h2 style="display: block;">Catalogue photo:</h2>
@@ -64,40 +67,6 @@
             </div>
           </div>
 
-
-          <!--          <div class="card cardTree" id="Location">-->
-          <!--            <div class="card-body">-->
-          <!--              <h2 style="display: block;">Location d'appartement</h2>-->
-          <!--              <div class="content">-->
-          <!--                <p>Prise en charge et restitution</p>-->
-          <!--                <div class="row">-->
-          <!--                  <div class="col-6">-->
-          <!--                    <div>-->
-          <!--                      <i class="bi bi-calendar2"></i> <span>mer. 15 mai – 10 h 30 - jeu. 16 mai –10 h30</span>-->
-          <!--                    </div>-->
-
-          <!--                    <div>-->
-          <!--                      <i class="bi bi-slack"></i><span>Aéroport CDG</span>-->
-          <!--                      <p>Paris Ch De Gaulle Apt T1 T2 Roissy Apt Bp 332 Cedex Cdg, Roissy, France 95716</p>-->
-          <!--                    </div>-->
-          <!--                  </div>-->
-          <!--                  <div class="col-6">-->
-          <!--                    <div>-->
-          <!--                      <i class="bi bi-clock"></i><span> Heures d’ouverture</span>-->
-          <!--                      <p>-->
-          <!--                        mer. 07 h 00 – 23 h 59-->
-          <!--                        jeu. 07 h 00 – 23 h 59-->
-          <!--                      </p>-->
-          <!--                    </div>-->
-
-          <!--                    <div>-->
-          <!--                      <i class="bi bi-terminal-fill"></i> <span>Comptoir de propre d'appartement dans le terminal</span>-->
-          <!--                    </div>-->
-          <!--                  </div>-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
           <div class="card cardTree" id="Conditions">
             <div class="card-body">
               <h2>Conditions de location</h2>
@@ -162,14 +131,8 @@
               </div>
             </div>
           </div>
-
-
-
         </div>
-
-
-
-        <div class="col-4">
+        <div class="col-lg-4 col-md-12">
           <div class="card  cardTwo">
             <mat-form-field class="example-full-width">
               <mat-label>Choose a date</mat-label>
@@ -178,8 +141,6 @@
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-
-
             <div  class="input-group" style="display: flex ; align-items: baseline;justify-content: space-around;">
               <h3>Nomber des Jours</h3>
               <div style="width: 50%">
@@ -189,43 +150,48 @@
               </div>
             </div>
           </div>
-
           <div class="card cardfor">
-
             <div id="content" class="card-body-ez">
               <h4 style="display: inline-block;">Price details</h4>
-
               <h5>Pay at pick-up</h5>
               <div class="grid-container4">
-
                 <div><span>Car rental fee x 1 day</span>
                   <p>${{apparetement.loyerMensuel}} per day</p>
                 </div>
                 <div><span>${{apparetement.loyerMensuel}}</span></div>
-
-
               </div>
               <hr>
               <div class="grid-container4 ">
                 <div> <span>Total</span></div>
                 <div><span>${{apparetement.loyerMensuel*nbrJours}}</span></div>
-
                 <div> <a>Pay at pick-up</a></div>
                 <div> <a>${{apparetement.loyerMensuel*nbrJours}}</a></div>
-
                 <div> <a>Pay now</a></div>
                 <div> <a>${{apparetement.loyerMensuel*nbrJours}}</a></div>
               </div>
-
             </div>
-
-
             <button class="btn-rserver" (click)="handlReserve() ; ">Réserver</button>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+</div>
 
-      <!-- <div class="row">
+<p-dialog   [(visible)]="display2"  [style]="{width: '400px',height:'230px',overflow: 'hidden'}" [header]="'Notification'" [modal]="true" styleClass="p-fluid">
+
+  <div  style="overflow: hidden;">
+  <div>
+    <p style="text-align: center;font-size: larger;">Il n'est pas possible de créer une réservation pour le moment. Veuillez vous connecter pour continuer.</p>
+  </div>
+  <div class="p-dialog-footer ng-tns-c662934324-3 ng-star-inserted" style="height: 59px;">
+    <button class="btn btn-outline-danger btn-sm mx-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="anuller()">Annuler</button>
+    <button class="btn btn-outline-success btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#confirmationModal" routerLink="/login">Connexion</button>
+  </div>
+  </div>
+
+</p-dialog >
+ <!-- <div class="row">
         <div class="col-7 m-0">
             <div class="card cardTree">
                 <div class="card-body">
@@ -275,21 +241,83 @@
     </div> -->
 
 
-    </div>
-  </section>
-</div>
+<!--<p-dialog   [(visible)]="display3"  [header]="'Notification'" [modal]="true" styleClass="p-fluid">-->
 
-<p-dialog   [(visible)]="display2"  [style]="{width: '400px',height:'230px',overflow: 'hidden'}" [header]="'Notification'" [modal]="true" styleClass="p-fluid">
 
-  <div  style="overflow: hidden;">
-  <div>
-    <p style="text-align: center;font-size: larger;">Il n'est pas possible de créer une réservation pour le moment. Veuillez vous connecter pour continuer.</p>
-  </div>
-  <div class="p-dialog-footer ng-tns-c662934324-3 ng-star-inserted" style="height: 59px;">
-    <button class="btn btn-outline-danger btn-sm mx-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="anuller()">Annuler</button>
-    <button class="btn btn-outline-success btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#confirmationModal" routerLink="/login">Connexion</button>
-  </div>
-  </div>
+<!--&lt;!&ndash;  <div id="username-page">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="username-page-container">&ndash;&gt;-->
+<!--&lt;!&ndash;      <h1 class="title">Type your username to enter the Chatroom</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;      <form id="usernameForm" name="usernameForm">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <button type="submit" class="accent username-submit">Start Chatting</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
 
-</p-dialog >
 
+<!--  <div id="chat-page" >-->
+<!--    <div class="chat-container">-->
+<!--      <div class="chat-header">-->
+<!--        <h2>Spring WebSocket Chat  By Mohammed Ezzaim</h2>-->
+<!--      </div>-->
+<!--      <div class="connecting">-->
+<!--        Connecting...-->
+<!--      </div>-->
+<!--      <ul id="messageArea">-->
+
+<!--      </ul>-->
+
+<!--      <form id="messageForm" name="messageForm">-->
+<!--        <div class="form-group">-->
+<!--          <div class="input-group clearfix">-->
+<!--            <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>-->
+<!--            <button type="submit" class="primary">Send</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </form>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</p-dialog >-->
+
+
+
+
+
+          <!--          <div class="card cardTree" id="Location">-->
+          <!--            <div class="card-body">-->
+          <!--              <h2 style="display: block;">Location d'appartement</h2>-->
+          <!--              <div class="content">-->
+          <!--                <p>Prise en charge et restitution</p>-->
+          <!--                <div class="row">-->
+          <!--                  <div class="col-6">-->
+          <!--                    <div>-->
+          <!--                      <i class="bi bi-calendar2"></i> <span>mer. 15 mai – 10 h 30 - jeu. 16 mai –10 h30</span>-->
+          <!--                    </div>-->
+
+          <!--                    <div>-->
+          <!--                      <i class="bi bi-slack"></i><span>Aéroport CDG</span>-->
+          <!--                      <p>Paris Ch De Gaulle Apt T1 T2 Roissy Apt Bp 332 Cedex Cdg, Roissy, France 95716</p>-->
+          <!--                    </div>-->
+          <!--                  </div>-->
+          <!--                  <div class="col-6">-->
+          <!--                    <div>-->
+          <!--                      <i class="bi bi-clock"></i><span> Heures d’ouverture</span>-->
+          <!--                      <p>-->
+          <!--                        mer. 07 h 00 – 23 h 59-->
+          <!--                        jeu. 07 h 00 – 23 h 59-->
+          <!--                      </p>-->
+          <!--                    </div>-->
+
+          <!--                    <div>-->
+          <!--                      <i class="bi bi-terminal-fill"></i> <span>Comptoir de propre d'appartement dans le terminal</span>-->
+          <!--                    </div>-->
+          <!--                  </div>-->
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->

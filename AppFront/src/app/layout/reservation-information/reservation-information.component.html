@@ -228,7 +228,7 @@
 
             </div>
 
-            <button class="btn-rserver" (click)="RedirectversFacture_Paiment() ">Réserver</button>
+            <button class="btn-rserver" (click)="handlReserve() ; ">Réserver</button>
           </div>
         </div>
       </div>
@@ -286,3 +286,18 @@
     </div>
   </section>
 </div>
+
+
+<p-dialog   [(visible)]="display2"  [style]="{width: '400px',height:'230px',overflow: 'hidden'}" [header]="'Notification'" [modal]="true" styleClass="p-fluid">
+
+  <div  style="overflow: hidden;">
+    <div>
+      <p style="text-align: center;font-size: larger;">Il n'est pas possible de créer une réservation pour le moment. Veuillez vous connecter pour continuer.</p>
+    </div>
+    <div class="p-dialog-footer ng-tns-c662934324-3 ng-star-inserted" style="height: 59px;">
+      <button class="btn btn-outline-danger btn-sm mx-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="anuller()">Annuler</button>
+      <button class="btn btn-outline-success btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#confirmationModal" routerLink="/login">Connexion</button>
+    </div>
+  </div>
+
+</p-dialog >

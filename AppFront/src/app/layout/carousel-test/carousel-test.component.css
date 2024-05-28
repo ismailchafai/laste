@@ -184,6 +184,7 @@ card[_ngcontent-ng-c1606768246]::before {
 .card:hover .info {
   opacity: 1;
   transform: translateY(0);
+  /*background:red;*/
 }
 
 .card .info h1 {

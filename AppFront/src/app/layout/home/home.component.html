@@ -1,13 +1,11 @@
 <div class="card_t text-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills " style=" position: relative;
-  top: 2rem;
-  left: 2rem;" >
+    <ul class="nav nav-pills card-header-pills " style="display: flex;justify-content: center;position: relative;top: 2rem;" >
       <li class="nav-item">
-        <a class="nav_x nav-link text-dark" (click)="clicVoiture()">{{ 'Voiture'|translate }}</a>
+        <a class="nav-link text-dark" (click)="clicVoiture()">{{ 'Voiture'|translate }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav_x nav-link text-dark" (click)="clicApp()">{{ 'Appartement'|translate }}</a>
+        <a class="nav-link text-dark" (click)="clicApp()">{{ 'Appartement'|translate }}</a>
       </li>
 
     </ul>
@@ -74,12 +72,12 @@
 
       <div *ngIf="!formatcard && !selected" class="container" style="margin-top:50px;">
         <div class="row">
-          <div *ngFor="let item of dataVoiture" class="col-md-4">
+          <div *ngFor="let item of dataVoiture" class="col-lg-4 col-md-6 col-sm-12" style="margin-top: 15px;">
             <div class="card-sl">
-              <div class="card-image">
-                <img [src]="returnUrl(item)" class="img_horizental"/>
+              <div class="card-image" style="height: 220px;">
+                <img style="height: 100%; width: 100%;" [src]="returnUrl(item)" />
               </div>
-
+        
               <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
               <div class="card-heading">
                 {{item.nomModele}}
@@ -94,6 +92,7 @@
             </div>
           </div>
         </div>
+        
       </div>
     </div>
 
@@ -104,21 +103,27 @@
         <div class="col-4">
 <!--          <label for="browser" class="form-label">Choose Categorie:</label>-->
           <select name="category" class="form-control form-select"  [(ngModel)]="selecCategorieApt" (change)="onCategorieChange();handelSearch()">
-            <option value="" disabled selected>Choose {{ 'Categorie'|translate }}:</option>
+            <option value="1" disabled selected>Choose {{ 'Categorie'|translate }}:</option>
             <option value="">{{ 'All'|translate }}</option>
             <option [value]="cate.libelle" *ngFor="let cate of dataCategorieApartement">{{cate.libelle}}</option>
           </select>
 
         </div>
         <div class="col-4">
-          <form>
-<!--            <label for="browser" class="form-label">Choose Ville:</label>-->
-            <input class="form-control " list="browsers" name="browser" id="browser"  placeholder="Choose Ville..."  [(ngModel)]="villSelected" (change)="apparetementByMontant();handelSearch()">
-            <datalist id="browsers">
-              <option [value]="cate" *ngFor="let cate of villes">{{cate}}</option>
-            </datalist>
-          </form>
+          <select name="category" class="form-control form-select" [(ngModel)]="villSelected" (change)="apparetementByMontant()">
+            <option value="" selected> Ville</option>
+            <option [value]="cate" *ngFor="let cate of villes">{{cate}}</option>
+          </select>
         </div>
+<!--        <div class="col-4">-->
+<!--          <form>-->
+<!--&lt;!&ndash;            <label for="browser" class="form-label">Choose Ville:</label>&ndash;&gt;-->
+<!--            <input class="form-control " list="browsers" name="browser" id="browser"  placeholder="Choose Ville..."  [(ngModel)]="villSelected" (change)="apparetementByMontant();handelSearch()">-->
+<!--            <datalist id="browsers">-->
+<!--              <option [value]="cate" *ngFor="let cate of villes">{{cate}}</option>-->
+<!--            </datalist>-->
+<!--          </form>-->
+<!--        </div>-->
         <div *ngIf="!selected" class="btn_format">
           <a class="btn btn-outline-primary rounded-0" [class.active]="formatcard" (click)="handelHorizental()" > <i class="bi bi-list"></i> </a>
           <a class="btn btn-outline-primary rounded-0"[class.active]="!formatcard" (click)="handelVertical()"> <i class="bi bi-columns-gap"></i> </a>
@@ -133,7 +138,7 @@
         <div class="card-horizontal" *ngFor="let apparetement of dataApartement">
 
           <div class="card-image">
-            <img [src]="returnUrl(apparetement)" alt=""/>
+            <img [src]="returnUrl(apparetement)" class="img_horizental" alt=""/>
           </div>
           <div class="card-details">
             <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
@@ -155,37 +160,33 @@
 
 
       <div *ngIf="!formatcard && !selected" class="container" style="margin-top:50px;">
-        <div class="col-4">
-          <select name="category" class="form-control form-select" [(ngModel)]="villSelected" (change)="apparetementByMontant()">
-            <option value="" selected> Ville</option>
-            <option [value]="cate" *ngFor="let cate of villes">{{cate}}</option>
-          </select>
-        </div>
-        <div class="row">
+<!--        <div class="col-4">-->
+<!--          <select name="category" class="form-control form-select" [(ngModel)]="villSelected" (change)="apparetementByMontant()">-->
+<!--            <option value="" selected> Ville</option>-->
+<!--            <option [value]="cate" *ngFor="let cate of villes">{{cate}}</option>-->
+<!--          </select>-->
+<!--        </div>-->
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let appartement of dataApartement">
+    <div class="card-sl">
+      <div class="card-image" style="height: 220px;">
+        <img style="height: 100%; width: 100%;" [src]="returnUrl(appartement)" alt=""/>
+      </div>
+      <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+      <div class="card-heading">
+        {{appartement.code}}
+      </div>
+      <div class="card-text">
+        {{appartement.adresse}}
+      </div>
+      <div class="card-text">
+        ${{appartement.loyerMensuel}}
+      </div>
+      <button class="card-button" routerLink="/facteurApparetement/{{appartement.code}}">Réserver</button>
+    </div>
+  </div>
+</div>
 
-          <div class="col-md-4" *ngFor="let apparetement of dataApartement">
-            <div class="card-sl">
-              <div class="card-image">
-                <img width="200px" height="200px"  [src]="returnUrl(apparetement)" alt=""/>
-              </div>
-              <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-              <div class="card-heading">
-                {{apparetement.code}}
-              </div>
-              <div class="card-text">
-                {{apparetement.adresse}}
-              </div>
-              <div class="card-text">
-                ${{apparetement.loyerMensuel}}
-              </div>
-
-<!--              <button class="btn btn-outline-primary" (click)="returnUrl(apparetement)">getImage</button>-->
-
-              <button href="#" class="card-button" routerLink="/facteurApparetement/{{apparetement.code}}"> {{ 'Réserver'|translate }} </button>
-
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -200,10 +201,10 @@
 " >{{ 'Discover your new favorite stay'|translate }}</h1>
   <app-carousel-test></app-carousel-test>
 
-  <div class="carousel">
+  <!-- <div class="carousel"> -->
     <app-carousel-with-filter-app></app-carousel-with-filter-app>
     <app-carousel-with-animation></app-carousel-with-animation>
     <app-carousel-with-filter-voit></app-carousel-with-filter-voit>
-  </div>
+  <!-- </div> -->
 
 </div>

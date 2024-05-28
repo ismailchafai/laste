@@ -31,6 +31,8 @@ export class FacteurApparetementComponent implements OnInit {
   days: string[] = [];
   display = false;
   display2 = false;
+  display3 = false;
+
 
 
   constructor(private elementRef: ElementRef, private reservationService: ReservationService,
@@ -379,5 +381,9 @@ export class FacteurApparetementComponent implements OnInit {
 
   anuller() {
     this.display2=false;
+  }
+
+  handleMessage(){
+    this.display3=true;
   }
 }

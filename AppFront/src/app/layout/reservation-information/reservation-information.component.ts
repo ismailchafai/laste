@@ -32,6 +32,7 @@ export class ReservationInformationComponent  implements OnInit{
   voitureData=new Voiture();
   nbrJours=1;
   display=false;
+  display2 = false;
   // findReservation
   dataReservationVoiture:Array<Reservation>=new Array<Reservation>();
   // dataReservationAppartement:Array<Reservation>=new Array<Reservation>();
@@ -323,6 +324,7 @@ export class ReservationInformationComponent  implements OnInit{
   }
 
   handlReserve() {
+    if(this.authService.isAuthService) {
     console.log(this.maDate2, 'yyyy-MM-dd')
     console.log(this.maDate, 'yyyy-MM-dd')
     this.item.dateFin = this.datePipe.transform(this.maDate2, 'yyyy-MM-dd')!;
@@ -373,7 +375,11 @@ export class ReservationInformationComponent  implements OnInit{
     this.nItem.iceAgence = this.voitureData.agenceLocation.iceAgLoc;
     this.nItem.nomClient = this.item.client.nom;
     this.nItem.refReservation=this.item.ref;
-    this.NotificationSave();
+    this.NotificationSave();}
+    else{
+        this.display2=true
+        // this.router.navigateByUrl("/login")
+      }
   }
 
 
@@ -413,7 +419,9 @@ export class ReservationInformationComponent  implements OnInit{
   returnUrl(voitureData: any) {
     return voitureData.imagePaths[0]
   }
-
+  anuller() {
+    this.display2=false;
+  }
 
 }
 
