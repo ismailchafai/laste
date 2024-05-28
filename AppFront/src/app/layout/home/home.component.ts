@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {Voiture} from "../../sahred/model/voitureModel/voiture.model";
 import {CategoriesAppartement} from "../../sahred/model/appartemetModel/categories-appartement.model";
 import {Appartement} from "../../sahred/model/appartemetModel/appartement.model";
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit,AfterViewInit{
 
   constructor(private voitureService:VoitureService , private categoreieappartemetService:CategoriesAppartementService ,
               private apartement:AppartemetService,private router:Router, private categorievoitservice:CategorieVoitureService,
-              private appartemetService:AppartemetService,private elementRef: ElementRef) {
+              private appartemetService:AppartemetService,private elementRef: ElementRef ,private renderer: Renderer2) {
   }
 
 
@@ -55,8 +55,10 @@ export class HomeComponent implements OnInit,AfterViewInit{
     this.getAllApartement();
     this.getAllCategorie();
     this.getville();
+
   }
   ngAfterViewInit() {
+  
 
   }
 
@@ -318,6 +320,9 @@ export class HomeComponent implements OnInit,AfterViewInit{
       this.lastClicked = element;
     }
   }
+
+
+
 }
 
 

@@ -143,7 +143,7 @@
 
 <div class="container" style="width: 90rem;text-align: center;margin-left: -3rem;" >
   <div class="slider-wrapper" style="color :black">
-    <h1 class="titre" style="color :black">Discover your new favorite Voiture</h1>
+    <h1 class="title">{{ 'Recommended cars for you '|translate }}</h1>
     <ul class="image-list"  style=" width: 97rem;margin-left: -4rem;display: grid;grid-template-columns: repeat({{datVoiture.length}}, 1fr);gap: 18px;" >
       <div *ngFor="let item of datVoiture; let i=index"  class="card" style="width: 18rem;">
         <div routerLink="/reservationInformation/{{item.matricule}}">
@@ -151,9 +151,9 @@
           <div class="card-bodye" style="color :black">
             <ul style="list-style: none">
               <li style="font-size:22px;font-family: revert;">{{ item.nomModele }}</li>
-              <li style="font-size:11px;font-family: cursive;"> voiture {{item.categorie}} </li>
+              <li style="font-size:11px;font-family: cursive;"> voiture {{item.categorie.libelle}} </li>
               <li style="background-color: cornflowerblue; border-radius: 20px; text-align: center; margin: 8px;
-            font-family: cursive;"><i class="bi bi-credit-card-fill"></i> price: {{item.prix}}$</li>
+            font-family: cursive;"><i class="bi bi-credit-card-fill"></i> prix: {{item.prix}}$</li>
             </ul>
           </div>
         </div>
