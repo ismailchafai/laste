@@ -38,6 +38,7 @@ export class NotificationInfoComponent implements OnInit{
   dataApparetementByCode:Appartement=new Appartement();
   numberJoures!: number;
   ref!: string;
+
   dataReservationByRef: Reservation=new Reservation();
   reseirvationBollean=true;
   private ice: any;
@@ -266,6 +267,7 @@ export class NotificationInfoComponent implements OnInit{
   showDialoge(item: Notifiaction) {
     this.display=true;
     this.ref=item.refReservation;
+    this.locationService.refLocation=item.refReservation;
     item.visibleClinet=true;
     this.notifiactionService.update(item).subscribe({
       next:(data)=>{
@@ -303,7 +305,7 @@ export class NotificationInfoComponent implements OnInit{
 
 
   redirectVersfacture() {
-    this.router.navigateByUrl('facture');
+    // this.router.navigateByUrl('/facture');
     this.display=false;
     this.isAffaiche=false;
   }

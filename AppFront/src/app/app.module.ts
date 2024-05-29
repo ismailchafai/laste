@@ -103,6 +103,7 @@ import { ChartsComponent } from './layout/charts/charts.component';
 import { ChartsAppartementComponent } from './layout/charts-appartement/charts-appartement.component';
 import {ChartModule} from "angular-highcharts";
 import { HomeChartsComponent } from './layout/home-charts/home-charts.component';
+import {FactureComponent} from "./layout/facture/facture.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
    return new TranslateHttpLoader(http);
@@ -130,6 +131,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListContratComponent,
     CreatFactureComponent,
     EditFactureComponent,
+    FactureComponent,
     ListFactureComponent,
     CreatLocationComponent,
     EditLocationComponent,

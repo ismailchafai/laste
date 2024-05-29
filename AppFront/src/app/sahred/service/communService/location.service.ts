@@ -7,6 +7,8 @@ import {Location} from "../../model/communModel/location.model";
   providedIn: 'root'
 })
 export class LocationService {
+  public refLocation!: string;
+
 
   public _item: Location = new Location();
   public _items:Array<Location>=new Array<Location>();

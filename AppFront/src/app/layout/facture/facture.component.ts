@@ -1,13 +1,36 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import {LocationService} from "../../sahred/service/communService/location.service";
+import {Location} from "../../sahred/model/communModel/location.model";
+import {FactureService} from "../../sahred/service/communService/facture.service";
 
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
   styleUrl: './facture.component.css'
 })
-export class FactureComponent {
+export class FactureComponent implements OnInit{
+  dataLocation:Location=new Location();
+  constructor(private locationService:LocationService) {
+  }
+
+  ngOnInit(): void {
+    this.getLocationByReservationRef()
+  }
+
+
+  getLocationByReservationRef(){
+    this.locationService.findLocationByReservationRef(this.locationService.refLocation).subscribe({
+      next:data=>{
+        this.dataLocation=data;
+        console.log("dataLocationByReservationRef");
+        console.log(this.dataLocation)
+      },
+      error:err=>{console.log(err)}
+    })
+  }
+
 
   exportToPDF() {
     const content = document.getElementById('content');

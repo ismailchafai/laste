@@ -29,7 +29,7 @@
     <div class="alert alert-success d-flex align-items-center" role="alert">
       <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
       <div>
-        confirmation réussie
+        La réservation est confirmée.
       </div>
     </div>
 
@@ -50,7 +50,7 @@
     <div class="alert alert-danger d-flex align-items-center" role="alert">
       <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
       <div>
-        La rejection réussie
+        La réservation est rejetée.
       </div>
     </div>
 
@@ -183,7 +183,8 @@
 
             <p>Nombre de Joure de reservation : {{numberJoures}} Jours</p>
         </div>
-      <div><div class="modal fade m-auto" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="height: 400px; width: 720px;">
+      <div>
+        <div class="modal fade m-auto" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="height: 400px; width: 720px;">
         <div class="modal-dialog">
           <div class="modal-content" style="background-color: #2e2d2d;">
             <div class="modal-header">
@@ -214,7 +215,8 @@
             </div>
           </div>
         </div>
-      </div></div>
+      </div>
+      </div>
       <div>
         <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -248,6 +250,11 @@
           </div>
         </div>
       </div>
+
+
+
+
+
         <div>
             <img *ngIf="authService.roles.includes('MANAGER-APT')" [src]="returnUrl(dataApparetementByCode)" style="width: 270px;height:250px " class="img-fluid" alt="">
             <img *ngIf="authService.roles.includes('MANAGER-VOI')" [src]="returnUrl(dataVoitureByMatricue)" style="width: 270px;height:250px " class="img-fluid" alt="">
@@ -265,8 +272,47 @@
             <div *ngIf="notifiactionSelectionner.codeAppartement!=null">une appartement
                 sur notre plateforme a été confirmée avec succès</div>
 
-            <p>Voici les détails de votre réservation :
-            </p>
+          <!--      ???????????????????????????????????La confirmation d'annulation-->
+          <div>
+            <div class="modal fade m-auto" id="confirmationAnnuler" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmationAnnulerLabel" aria-hidden="true" style="height: 400px; width: 720px;">
+              <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #2e2d2d;">
+                  <div class="modal-header">
+
+                    <h5 class="modal-title" style="color:white" id="confirmationAnnulerLabel">Confirmer d'annulation</h5>
+                    <button type="button" class="btn-close" style="color:white" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                    <!-- Icone de close -->
+                    <i class="material-icons" style="
+                   color: #ff000094;
+                    border: 2px solid #c10f0f91;
+                    border-radius: 50%;
+                    font-size: 53px;
+                    text-shadow: -6px 0px 20px #a98484;
+              ">close</i>
+
+                    <!-- Phrase de confirmation -->
+                    <p style="
+              color: red;
+                font-size: x-large;
+                font-style: italic;
+                ">Etes-vous sûr que vous voulez annuler?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" (click)="handelAnnuler(notifiactionSelectionner)">Annuler la reservation</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+          <p>Voici les détails de votre réservation :</p>
             <ul>
                 <li *ngIf="notifiactionSelectionner.matriculeVoiture!=null">matricule de voiture : {{notifiactionSelectionner.matriculeVoiture}}</li>
                 <li *ngIf="notifiactionSelectionner.codeAppartement!=null">code d'appartement : {{notifiactionSelectionner.codeAppartement}}</li>
@@ -293,8 +339,10 @@
         </div>
         <div *ngIf="authService.roles=='USER' && notifiactionSelectionner.confermer==true ">
             si vous voulez d'annuler la location cliquer sur annuler
-            <button class="btn btn-outline-danger btn-sm mx-2" (click)="handelAnnuler(notifiactionSelectionner)">annuler</button>
-            <a class=" btn-sm mx-2" style="cursor: pointer;text-decoration: none" (click)="redirectVersfacture()"><strong>aller vers facture <i class="bi bi-arrow-right-square"></i> </strong> </a>
+
+          <button class="btn btn-outline-danger btn-sm mx-2"  data-bs-toggle="modal" data-bs-target="#confirmationAnnuler">annuler</button>
+<!--          <button class="btn btn-outline-danger btn-sm mx-2" (click)="handelAnnuler(notifiactionSelectionner)">annuler</button>-->
+            <a class=" btn-sm mx-2" style="cursor: pointer;text-decoration: none" (click)="redirectVersfacture()" ><strong routerLink="/facture">aller vers facture <i class="bi bi-arrow-right-square"></i> </strong> </a>
         </div>
 
 

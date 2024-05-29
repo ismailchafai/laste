@@ -40,7 +40,7 @@ export class ProdileEzzComponent implements OnInit{
       next:data=>{
         console.log("data de getByUserName..."+data)
         this.client=data;
-
+console.log("data client :::::")
         console.log(this.client)
       },
       error:err => {
