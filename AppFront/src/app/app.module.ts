@@ -104,6 +104,9 @@ import { ChartsAppartementComponent } from './layout/charts-appartement/charts-a
 import {ChartModule} from "angular-highcharts";
 import { HomeChartsComponent } from './layout/home-charts/home-charts.component';
 import {FactureComponent} from "./layout/facture/facture.component";
+import { ChatComponent } from './layout/chat/chat.component';
+import { PaiementComponent } from './layout/paiement/paiement.component';
+import {MatDialogContent} from "@angular/material/dialog";
 
 export function HttpLoaderFactory(http: HttpClient) {
    return new TranslateHttpLoader(http);
@@ -172,68 +175,71 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChartsComponent,
     ChartsAppartementComponent,
     HomeChartsComponent,
+    ChatComponent,
+    PaiementComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    DragDirective,
-    HttpClientModule,
-    FormsModule,
-    MatTableModule,
-    MatCardContent,
-    MatCardModule,
-    MatDividerModule,
-    MatPaginatorModule,
-    MatSortModule,
-    ButtonModule,
-    ToolbarModule,
-    SplitButtonModule,
-    DialogModule,
-    RadioButtonModule,
-    MenuModule,
-    ToastModule,
-    MatInputModule,
-    MatFormFieldModule,
-    DropdownModule,
-    PaginatorModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        DragDirective,
+        HttpClientModule,
+        FormsModule,
+        MatTableModule,
+        MatCardContent,
+        MatCardModule,
+        MatDividerModule,
+        MatPaginatorModule,
+        MatSortModule,
+        ButtonModule,
+        ToolbarModule,
+        SplitButtonModule,
+        DialogModule,
+        RadioButtonModule,
+        MenuModule,
+        ToastModule,
+        MatInputModule,
+        MatFormFieldModule,
+        DropdownModule,
+        PaginatorModule,
 
-    MatDrawerContent,
-    MatListItem,
+        MatDrawerContent,
+        MatListItem,
 
-    MatGridList,
-    MatGridTile,
-    MatIconModule,
-    MatDrawerContainer,
-    MatNavList,
-    MatMenuTrigger,
-    MatMenuModule,
-    MatBadgeModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatList,
-    RippleModule,
-    ChipsModule,
-    SearchIcon,
-    TranslateModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
-    TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-        }
-      }
-    ),
-    ChartModule,
+        MatGridList,
+        MatGridTile,
+        MatIconModule,
+        MatDrawerContainer,
+        MatNavList,
+        MatMenuTrigger,
+        MatMenuModule,
+        MatBadgeModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatList,
+        RippleModule,
+        ChipsModule,
+        SearchIcon,
+        TranslateModule,
+        MatDatepickerModule,
+        MatMomentDateModule,
+        TranslateModule.forRoot({
+                loader: {
+                    provide: TranslateLoader,
+                    useFactory: HttpLoaderFactory,
+                    deps: [HttpClient]
+                }
+            }
+        ),
+        ChartModule,
+        MatDialogContent,
 
 
-  ],
+    ],
   providers: [
     MessageService,
     AuthService,

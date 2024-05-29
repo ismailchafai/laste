@@ -13,6 +13,7 @@ import {DatePipe} from "@angular/common";
 import {NotifiactionService} from "../../sahred/service/notificationService/notifiaction.service";
 import {Notifiaction} from "../../sahred/model/notificationModel/notifiaction.model";
 import {ActivatedRoute, Router} from "@angular/router";
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -44,7 +45,7 @@ export class ReservationInformationComponent  implements OnInit{
 
   constructor(private elementRef: ElementRef , private authService:AuthService , private router:Router, private clientService :ClientService
     , private voitureService:VoitureService,private datePipe: DatePipe,private reservationService:ReservationService , private route: ActivatedRoute
-    ,private clienService:ClientService , private notifiactionService :NotifiactionService) {
+    ,private clienService:ClientService , private notifiactionService :NotifiactionService,public dialog: MatDialog) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
     this.maxDate = new Date(currentYear + 1, 11, 31);
