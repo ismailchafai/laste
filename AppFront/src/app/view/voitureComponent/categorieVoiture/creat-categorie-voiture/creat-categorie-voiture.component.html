@@ -111,10 +111,9 @@
 
 <p-dialog  [maximizable]="true"  [(visible)]="isAffaiche" [style]="{width: '900px',height:'900px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
   <div class="iamges" >
-    <img  [src]="image"  alt="" width="200px" height="200px">
+    <img class="carousel-image"   [src]="this.image"  alt="" >
   </div>
 </p-dialog>
-
 
 
 <button class="btn btn-primary" type="button" disabled>

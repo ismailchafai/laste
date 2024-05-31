@@ -107,7 +107,7 @@ import {FactureComponent} from "./layout/facture/facture.component";
 import { ChatComponent } from './layout/chat/chat.component';
 import { PaiementComponent } from './layout/paiement/paiement.component';
 import {MatDialogContent} from "@angular/material/dialog";
-
+import {CarouselModule} from "primeng/carousel";
 export function HttpLoaderFactory(http: HttpClient) {
    return new TranslateHttpLoader(http);
 }
@@ -208,7 +208,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
         MatDrawerContent,
         MatListItem,
-
+        CarouselModule,
         MatGridList,
         MatGridTile,
         MatIconModule,

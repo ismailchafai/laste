@@ -375,4 +375,13 @@ export class CreatAppartemetComponent implements OnInit,AfterViewInit{
   removeFromCloudinary(photo: string) {
     this.appartemetService.deleteImageCloudinary(photo)
   }
+
+  currentIndex: number = 0;
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+  }
+
+  prevSlide() {
+    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+  }
 }

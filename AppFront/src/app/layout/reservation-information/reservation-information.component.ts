@@ -30,7 +30,7 @@ export class ReservationInformationComponent  implements OnInit{
   lastClicked: HTMLElement | null = null;
   public dataLoaded!:Client;
   matricule:any;
-  voitureData=new Voiture();
+  voitureData:any;
   nbrJours=1;
   display=false;
   display2 = false;
@@ -401,6 +401,25 @@ export class ReservationInformationComponent  implements OnInit{
   }
   anuller() {
     this.display2=false;
+  }
+
+  
+  openImageInNewTab(url: string) {
+    window.open(url, '_blank');
+  }
+
+  currentIndex: number = 0;
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.voitureData.imagePaths.length;
+  }
+
+  prevSlide() {
+    this.currentIndex = (this.currentIndex - 1 + this.voitureData.imagePaths.length) % this.voitureData.imagePaths.length;
+  }
+
+
+  returnUrlsVoiture(voitureData:any) {
+    return  voitureData.imagePaths
   }
 
 }

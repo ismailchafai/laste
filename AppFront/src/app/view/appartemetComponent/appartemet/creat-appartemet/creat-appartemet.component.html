@@ -205,8 +205,17 @@
 </p-dialog>
 
 <p-dialog  [maximizable]="true"  [(visible)]="displayImagesByCode" [style]="{width: '900px',height:'900px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
-  <div class="iamges" >
-    <img *ngFor="let photo of images"  [src]="photo"  alt="" width="200px" height="200px">
-  </div>
+  <p-carousel [value]="images" circular="true" autoplayInterval="3000" >
+    <ng-template let-url pTemplate="item">
+      <div class="border-1 surface-border border-round m-2 p-3">
+        <img [src]="url" class="carousel-image" [alt]="url">
+      </div>
+    </ng-template>
+
+    <div class="carousel-controls">
+      <button pButton type="button" icon="pi pi-chevron-left" class="p-button-secondary p-button-rounded left-button" (click)="prevSlide()"></button>
+      <button pButton type="button" icon="pi pi-chevron-right" class="p-button-secondary p-button-rounded right-button" (click)="nextSlide()"></button>
+    </div>
+  </p-carousel>
 </p-dialog>
 

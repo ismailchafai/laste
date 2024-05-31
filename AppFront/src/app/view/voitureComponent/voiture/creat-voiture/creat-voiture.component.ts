@@ -343,4 +343,14 @@ export class CreatVoitureComponent  implements OnInit, AfterViewInit {
       }
     })
   }
+
+  currentIndex: number = 0;
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+  }
+
+  prevSlide() {
+    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+  }
+
 }

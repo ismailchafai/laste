@@ -386,4 +386,19 @@ export class FacteurApparetementComponent implements OnInit {
   handleMessage(){
     this.display3=true;
   }
+
+
+  currentIndex: number = 0;
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.appartemetDataImages.imagePaths.length;
+  }
+
+  prevSlide() {
+    this.currentIndex = (this.currentIndex - 1 + this.appartemetDataImages.imagePaths.length) % this.appartemetDataImages.imagePaths.length;
+  }
+
+  openImageInNewTab(url: string) {
+    window.open(url, '_blank');
+  }
+
 }

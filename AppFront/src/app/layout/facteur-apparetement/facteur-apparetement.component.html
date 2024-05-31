@@ -55,17 +55,26 @@
               </div>
             </div>
           </div>
+
+
           <div class="card cardTree" id="Location" >
             <div class="card-body">
               <h2 style="display: block;">Catalogue photo:</h2>
-              <div class="content">
 
-                <div style="position: relative;margin-right: 15px;" class="mt-5" >
-                  <img style="width: 200px; height:200px; margin: 10px;" *ngFor="let url of appartemetDataImages.imagePaths" [src]=url>
-                </div>
+              <p-carousel [value]="appartemetDataImages.imagePaths" circular="true"  autoplayInterval="3000">
+                <ng-template let-url pTemplate="item">
+                  <div class="border-1 surface-border border-round m-2 p-3">
+                    <img [src]="url" class="carousel-image" [alt]="url" (click)="openImageInNewTab(url)">
+                  </div>
+                </ng-template>
+
+                <button pButton type="button" icon="pi pi-chevron-left" class="p-button-secondary p-button-rounded" (click)="prevSlide()"></button>
+                <button pButton type="button" icon="pi pi-chevron-right" class="p-button-secondary p-button-rounded" (click)="nextSlide()"></button>
+              </p-carousel>
+
               </div>
-            </div>
           </div>
+
 
           <div class="card cardTree" id="Conditions">
             <div class="card-body">
