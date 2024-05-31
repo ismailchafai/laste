@@ -131,7 +131,7 @@
         </button>
       </mat-list-item>
 
-      <mat-list-item *ngIf="authService.isAuthService && authService.roles.includes('MANAGER-VOI')">
+      <mat-list-item >
         <button mat-button routerLink="/agenceLocation/createVoiture" >
           <mat-icon>{{ 'Voiture'|translate }}</mat-icon>
           {{ 'Create Voiture'|translate }}

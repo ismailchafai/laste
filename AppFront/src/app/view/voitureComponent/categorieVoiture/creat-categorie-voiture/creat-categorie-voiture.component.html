@@ -97,8 +97,13 @@
 
 
   <ng-template pTemplate="footer">
-    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
-    <button *ngIf="isCreat" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveObject()"></button>
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" >
+
+    </button>
+    <button *ngIf="isCreat" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveObject()">
+      <span *ngIf="click && isPass==0" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      <span *ngIf="click && isPass==0" class="visually-hidden" role="status">Loading...</span>
+    </button>
     <button *ngIf="isEdit" pButton pRipple label="Update" icon="pi pi-check" class="p-button-text" (click)="Editbject()"></button>
   </ng-template>
 </p-dialog>
@@ -112,3 +117,7 @@
 
 
 
+<button class="btn btn-primary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+  <span class="visually-hidden" role="status">Loading...</span>
+</button>

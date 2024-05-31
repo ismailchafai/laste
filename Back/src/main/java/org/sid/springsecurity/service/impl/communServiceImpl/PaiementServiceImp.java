@@ -32,30 +32,6 @@ public class PaiementServiceImp implements PaiementService {
 
     public int save(Paiement paiement) {
         if (paiement.getRef() == null) return -1;
-
-        if (paiement.getFacture() == null || paiement.getFacture().getRef() == null) return -2;
-
-        Facture facture = factureService.findByRef(paiement.getFacture().getRef());
-        if (facture == null) return -3;
-        paiement.setFacture(facture);
-
-        if (paiement.getAgenceLocation() != null && paiement.getAgenceLocation().getIceAgLoc() != null) {
-            AgenceLocation agenceLocation = agenceLocationService.findByiceAgLoc(paiement.getAgenceLocation().getIceAgLoc());
-            if (agenceLocation == null) return -4;
-            paiement.setAgenceLocation(agenceLocation);
-        } else {
-            paiement.setAgenceLocation(null);
-        }
-
-        if (paiement.getProp_appartement() != null && paiement.getProp_appartement().getIceAgApp() != null) {
-            AgenceAppartement agenceAppartement = agenceAppartementService.findByIceAgApp(paiement.getProp_appartement().getIceAgApp());
-            if (agenceAppartement == null) {
-                return -5;
-            }
-            paiement.setProp_appartement(agenceAppartement);
-        } else {
-        }paiement.setProp_appartement(null);
-
         paiementDao.save(paiement);
 
         return 1;

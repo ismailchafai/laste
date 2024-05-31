@@ -59,6 +59,14 @@ public class Config extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/notification/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/notification/**").permitAll()
 
+                .antMatchers(HttpMethod.POST, "/api/paiement/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/paiement/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/paiement/**").permitAll()
+
+                .antMatchers(HttpMethod.POST, "/api/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/**").permitAll()
+
 
                 .antMatchers(
                         HttpMethod.GET,
@@ -87,6 +95,10 @@ public class Config extends WebSecurityConfigurerAdapter {
                         "/login/",
                         "/user/"
                 ).permitAll()
+                .antMatchers(HttpMethod.POST, "/api/paiement/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/paiement/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/paiement/**").permitAll()
+
                 .antMatchers(HttpMethod.POST, "/api/client/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/client/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/client/**").permitAll()
@@ -95,9 +107,25 @@ public class Config extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/agenceLocation/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/agenceLocation/**").permitAll()
 
+                .antMatchers(HttpMethod.POST, "/api/safarent/manager/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/safarent/manager/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/safarent/manager/**").permitAll()
+
                 .antMatchers(HttpMethod.POST, "/api/agenceAppartement/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/agenceAppartement/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/agenceAppartement/**").permitAll()
+
+
+                .antMatchers(HttpMethod.POST, "/api/paiement/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/paiement/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/paiement/**").permitAll()
+
+
+
+
+                .antMatchers(HttpMethod.POST, "/api/facture/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/facture/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/facture/**").permitAll()
 
 
                 .antMatchers( "/refreshToken/", "/login/", "/user/").permitAll()

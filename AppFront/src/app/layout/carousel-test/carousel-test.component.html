@@ -9,10 +9,10 @@
       <div class="card mx-4 "  *ngFor="let it of dataVoiture">
         <img class="image-item image img-fluid"  [src]=returnUrl(it) alt="img-1" />
         <div class="info">
-          <h1>{{it.nomModele}}</h1>
-          <p>categorie {{it.categorie.libelle}} modele {{it.annee}} {{ it.boitevitesse }}
+          <h1 class="text-center mt-5">{{it.nomModele}}</h1>
+          <p class="text-center mt-5">categorie {{it.categorie.libelle}} modele {{it.annee}} {{ it.boitevitesse }}
             nombre de place  {{it.nbrPlace}} </p>
-          <a href="#" class="btn"  routerLink="/reservationInformation/{{it.matricule}}" >Reserver</a>
+          <a  href="#" class="text-center my-5 mx-5 btn"  routerLink="/reservationInformation/{{it.matricule}}" >Reserver</a>
         </div>
       </div>
 

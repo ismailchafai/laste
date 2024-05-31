@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {VoitureService} from "../../sahred/service/voitureService/voiture.service";
 import {Voiture} from "../../sahred/model/voitureModel/voiture.model";
 import {CategorieVoitureService} from "../../sahred/service/voitureService/categorie-voiture.service";
+import {CategorieVoiture} from "../../sahred/model/voitureModel/categorie-voiture.model";
 
 @Component({
   selector: 'app-carousel-with-filter-voit',
@@ -14,7 +15,7 @@ export class CarouselWithFilterVOITComponent implements OnInit
   public display:boolean = false;
   public formatcard:boolean = false;
   public selected:boolean = true;
-  h1Content: string = '';
+  public h1Content!:string ;
   public dataVoiture:Array<Voiture>=new Array<Voiture>();
   public  categories:any[]=[]
   // Utilisation de @ViewChild pour obtenir une référence à l'élément <div> avec la classe "info"
@@ -26,29 +27,21 @@ export class CarouselWithFilterVOITComponent implements OnInit
   }
 
 
-  ngOnInit()
-  {
+  ngOnInit() {
     this.categoriesService.getAll().subscribe({
-      next:data=>{
-        this.categories=data
+      next: data => {
+        this.categories = data
         console.log("slider a5ir haja::::")
-        console.log(this.categories)},
-      error:err => {console.log(err)}
+        console.log(this.categories)
+      },
+      error: err => {
+        console.log(err)
+      }
     })
 
     this.initSlider();
-
-//this. findByCategorievoiture();
   }
- /* findByCategorievoiture(){
-    this.voitureservice.findVoitureByCategoriLibelle(this.h1Content).subscribe({
-      next:(data)=>{
-        this.dataVoiture=data;
 
-      }
-    })
-  }
-*/
 
   initSlider()
   {
@@ -105,4 +98,10 @@ export class CarouselWithFilterVOITComponent implements OnInit
 
 
   protected readonly HTMLElement = HTMLElement;
+
+  returnUrl(voiture: any):string {
+    return voiture.imagePaths[0]
+  }
+
+
 }

@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit,AfterViewInit{
 
 
   ngOnInit(): void {
+
     this.getAll();
     this.getAllCategoriesApt();
     this.getAllApartement();
@@ -58,7 +59,7 @@ export class HomeComponent implements OnInit,AfterViewInit{
 
   }
   ngAfterViewInit() {
-  
+
 
   }
 
@@ -123,9 +124,6 @@ export class HomeComponent implements OnInit,AfterViewInit{
   }
   villes = villesMaroc;
   villSelected:string="" ;
-
-
-
 
 
 

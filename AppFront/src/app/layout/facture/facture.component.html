@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="  facture">
-      <h2 *ngIf="dataLocation.reservationDto.appartement !=null" class="facture-title">Facture de réservation d'appartement</h2>
+
       <h2 *ngIf="dataLocation.reservationDto.voiture !=null" class="facture-title">Facture de réservation de voiture</h2>
 
 <!--      <div class="row">-->
@@ -62,10 +62,16 @@
   <div class="invoice-container">
       <h1 class="facture-title"> <i class="bi bi-receipt-cutoff"></i> FACTURE</h1>
     <div *ngIf="dataLocation.reservationDto.appartement !=null" class="  client-details">
+
+      <div class="  fact">
+        <p><strong>ref de facture :</strong> 143</p>
+      </div>
+
       <p><strong>Agence :</strong></p>
       <p>{{dataLocation.reservationDto.appartement.propAppartemenetDto.email}}</p>
       <p>N° Siren ou Siret : {{dataLocation.reservationDto.appartement.propAppartemenetDto.iceAgApp}}</p>
-      <p>N° TVA intra. : {{dataLocation.reservationDto.appartement.propAppartemenetDto.ribAgenceApp}}</p>
+      <p>Raison Social : {{dataLocation.reservationDto.appartement.propAppartemenetDto.raisonSocialAg}}</p>
+      <p>adresse : {{dataLocation.reservationDto.appartement.propAppartemenetDto.adresse}}</p>
     </div>
     <div *ngIf="dataLocation.reservationDto.voiture !=null" class="  client-details"><p><strong>Agence :</strong></p>
       <p>{{dataLocation.reservationDto.voiture.agenceLocation.numTelephone}}</p>
@@ -89,19 +95,7 @@
 
 
 
-    <div class="  invoice-facture">
-      <p><strong>facture :</strong></p>
-        <p><strong>Date :</strong> </p>
-        <p><strong>ref de facture :</strong> 143</p>
-      </div>
 
-    <div class="client-details" >
-      <p><strong>Client :</strong></p>
-      <p>{{dataLocation.reservationDto.client.prenom}} {{dataLocation.reservationDto.client.nom}}</p>
-      <p>CIN: {{dataLocation.reservationDto.client.cin}}</p>
-      <p>Email: {{dataLocation.reservationDto.client.email_Client}}</p>
-      <p>Tell: {{dataLocation.reservationDto.client.numTeleClient}}</p>
-    </div>
 
     <div *ngIf="dataLocation.reservationDto.voiture !=null" class="Voiture-details" >
       <p><strong>Voiture réservée :</strong></p>
@@ -112,13 +106,20 @@
     </div>
 
     <div *ngIf="dataLocation.reservationDto.appartement !=null" class="Voiture-details" >
-      <p><strong>Voiture Appartement :</strong></p>
-      <p>categorie : {{dataLocation.reservationDto.appartement.categoriesAppartementDto.libelle}}</p>
+      <p><strong>Voiture réservée :</strong></p>
+      <p>Matricule :{{dataLocation.reservationDto.appartement.code}}</p>
       <p>Ville : {{dataLocation.reservationDto.appartement.ville}}</p>
-      <p>Adresse : {{dataLocation.reservationDto.appartement.adresse}}</p>
-      <p>Superficie : {{dataLocation.reservationDto.appartement.superficie}}</p>
       <p>Période de location : {{dataLocation.dateDebut}}-{{dataLocation.datefine}}</p>
     </div>
+
+    <div class="client-details" >
+      <p><strong>Client :</strong></p>
+      <p>{{dataLocation.reservationDto.client.prenom}} {{dataLocation.reservationDto.client.nom}}</p>
+      <p>CIN: {{dataLocation.reservationDto.client.cin}}</p>
+      <p>Email: {{dataLocation.reservationDto.client.email_Client}}</p>
+      <p>Tell: {{dataLocation.reservationDto.client.numTeleClient}}</p>
+    </div>
+
     <!--<div class="Appartement-details">
       <p class="facture-label">Appartement réservé :</p>
       <p>Adresse : 789 Rue des Tulipes</p>
@@ -129,7 +130,7 @@
 
      <div>
        <h2>Total à Payer : </h2>
-   <h2 class="total"> <strong> <i class="bi bi-credit-card-fill"></i> 1000$</strong></h2>
+   <h2 class="total"> <strong> <i class="bi bi-credit-card-fill"></i> 600$</strong></h2>
      </div>
   </div>
 </div>

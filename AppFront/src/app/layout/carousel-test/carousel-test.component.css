@@ -147,7 +147,6 @@
 }
 .card:hover {
   transform: translateY(-10px);
-  background: #b6b4b4;
 }
 card[_ngcontent-ng-c1606768246]::before {
   content: "";
@@ -175,8 +174,11 @@ card[_ngcontent-ng-c1606768246]::before {
   border-radius: 20px;
 }
 .card .info {
-  position: relative;
+  position: absolute;
   color: #fff;
+  left: 0rem;
+  top: 0rem;
+  background: #4646509c;
   z-index: 3;
   opacity: 0;
   transform: translateY(30px);
@@ -186,7 +188,6 @@ card[_ngcontent-ng-c1606768246]::before {
 .card:hover .info {
   opacity: 1;
   transform: translateY(0);
-  /*background:red;*/
 }
 
 .card .info h1 {

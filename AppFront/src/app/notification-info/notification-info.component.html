@@ -57,9 +57,8 @@
   </div>
 
     <div *ngIf="authService.roles=='USER'" style="overflow: scroll;" >
-
         <div *ngFor="let item of notificationClient">
-            <div class="notif_card " *ngIf="item.confermer|| item.annuler"     (click)="showDialoge(item) " [ngStyle]="item.visibleClinet==true?{'background-color': '#9393c6'}:{'background-color': '#39394f'}"   >
+            <div class="notif_card " *ngIf="item.confermer|| item.annuler" (click)="showDialoge(item) " [ngStyle]="item.visibleClinet==true?{'background-color': '#9393c6'}:{'background-color': '#39394f'}"   >
                 <img src="./assets/images/user.png" alt="avatar"
                      style="width: 46px;
     border-radius: 50%;
@@ -72,14 +71,12 @@
     padding: 0.5rem;
     margin-left: 4rem; ">
                     <p  style="font-size: 15px;line-height: 24px;">
-                        appartment de Code <strong *ngIf="item.iceAgence!=null">{{item.iceAgence}}</strong>
-                        <strong *ngIf="item.cinPropAppartement!=null">{{item.cinPropAppartement}}</strong>
-                        est  reserver <br> par le client de Cin {{item.cinClient}}
+                        notification de réservation d'apres  <br>
+                      l'agence <strong *ngIf="item.iceAgence!=null">{{item.iceAgence}}</strong>
                     </p>
                 </div>
             </div>
         </div>
-
 
     </div>
     <div *ngIf="authService.roles.includes('MANAGER-APT')||authService.roles.includes('MANAGER-VOI')" style="overflow: scroll;">
@@ -269,7 +266,7 @@
                 réservation pour  </p>
             <div *ngIf="notifiactionSelectionner.matriculeVoiture!=null">une voiture
                 sur notre plateforme a été confirmée avec succès</div>
-            <div *ngIf="notifiactionSelectionner.codeAppartement!=null">une appartement
+            <div *ngIf="notifiactionSelectionner.codeAppartement!=null">une voiture
                 sur notre plateforme a été confirmée avec succès</div>
 
           <!--      ???????????????????????????????????La confirmation d'annulation-->
@@ -315,10 +312,10 @@
           <p>Voici les détails de votre réservation :</p>
             <ul>
                 <li *ngIf="notifiactionSelectionner.matriculeVoiture!=null">matricule de voiture : {{notifiactionSelectionner.matriculeVoiture}}</li>
-                <li *ngIf="notifiactionSelectionner.codeAppartement!=null">code d'appartement : {{notifiactionSelectionner.codeAppartement}}</li>
+                <li *ngIf="notifiactionSelectionner.codeAppartement!=null">matricule de voiture : {{notifiactionSelectionner.codeAppartement}}</li>
                 <li>Date de début de la location : {{notifiactionSelectionner.dateDebutReservation}}</li>
                 <li>Date de fin de la location :{{notifiactionSelectionner.dateFinReservation}}</li>
-                <li>Numéro de réservation :{{notifiactionSelectionner.refReservation}}</li>
+                <li>référence de réservation :{{notifiactionSelectionner.refReservation}}</li>
             </ul>
         </div>
     </div>

@@ -78,12 +78,16 @@
               {{item.nomModele}}
             </div>
             <div class="card-text">
-              Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+              {{ item.nomModele }} is a {{item.categorie.libelle}} with Color {{item.couleur}} & Puissance of {{item.puissance}} Hourses.
             </div>
             <div class="card-text">
-              $67,400
+              {{item.prix}}
             </div>
-            <a href="#" class="card-button">Reserver</a>
+
+            <!--              <button class="btn btn-outline-primary" (click)="returnUrl(apparetement)">getImage</button>-->
+
+            <button href="#" class="card-button" routerLink="/reservationInformation/{{item.matricule}}"> {{ 'Réserver'|translate }} </button>
+
           </div>
         </div>
       </div>

@@ -40,6 +40,8 @@ public ListeColum = [
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 @ViewChild(MatSort) sort!:MatSort;
+  public click: boolean=false;
+  public isPass=0;
 
   constructor(private sanitizer:DomSanitizer,private service:CategorieVoitureService) {
   }
@@ -88,13 +90,14 @@ public ListeColum = [
   }
 
   saveObject() {
-    console.log(this.item)
+    this.click=true;
     const fomData=this.prepareFormData(this.item);
     this.service.save(fomData).subscribe({
       next:(data)=>{
         if(data==1){
           this.submitted = true;
           this.display=false;
+          this.isPass=1;
          this.getAll();
         }
         else {

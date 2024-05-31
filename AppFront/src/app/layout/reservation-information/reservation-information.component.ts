@@ -333,66 +333,38 @@ export class ReservationInformationComponent  implements OnInit{
   }
 
   handlReserve() {
-    if(this.authService.isAuthService) {
-    console.log(this.maDate2, 'yyyy-MM-dd')
-    console.log(this.maDate, 'yyyy-MM-dd')
-    this.item.dateFin = this.datePipe.transform(this.maDate2, 'yyyy-MM-dd')!;
-    this.item.dateDebut = this.datePipe.transform(this.maDate, 'yyyy-MM-dd')!;
+    if (this.authService.isAuthService) {
+      console.log(this.maDate2, 'yyyy-MM-dd')
+      console.log(this.maDate, 'yyyy-MM-dd')
+      this.item.dateFin = this.datePipe.transform(this.maDate2, 'yyyy-MM-dd')!;
+      this.item.dateDebut = this.datePipe.transform(this.maDate, 'yyyy-MM-dd')!;
+      this.item.ref = this.generateRandomCode(4);
+      this.item.voiture.matricule = "123";
+      this.item.client.cin = this.authService.dataUtilisateur.cin;
+      this.saveObject();
+      console.log("this.item")
+      console.log(this.item)
+      this.saveObject();
+      console.log("this.authService.client.cin===>" + this.authService.dataUtilisateur.cin)
+      // console.log("this.authService.client.id===>"+this.authService.client.id)
+      console.log("this.authService.dataUtilisateur.id===>" + this.authService.dataUtilisateur.id)
+      //notifiacation :
+      this.nItem.code = this.generateRandomCode(5);
+      this.nItem.dateFinReservation = this.datePipe.transform(this.maDate2, 'yyyy-MM-dd')!;
+      this.nItem.dateDebutReservation = this.datePipe.transform(this.maDate, 'yyyy-MM-dd')!;
+      this.nItem.matriculeVoiture = this.voitureData.matricule;
+      this.nItem.cinClient = this.authService.dataUtilisateur.cin;
+      this.nItem.nomClient = this.authService.dataUtilisateur.nom;
+      this.nItem.iceAgence = this.voitureData.agenceLocation.iceAgLoc;
+      this.nItem.refReservation = this.item.ref;
+      this.NotificationSave();
+    } else {
+      this.display2 = true
+      // this.router.navigateByUrl("/login")
+    }
 
 
-    // this.item.voiture.id = this.voitureData.id;
-    this.item.ref=this.generateRandomCode(4);
-    this.item.voiture.couleur = this.voitureData.couleur;
-    this.item.voiture.ville = this.voitureData.ville;
-    this.item.voiture.prix = this.voitureData.prix;
-    this.item.voiture.kiloMetrage = this.voitureData.kiloMetrage;
-    this.item.voiture.nbrPlace = this.voitureData.nbrPlace;
-    this.item.voiture.annee = this.voitureData.annee;
-    this.item.voiture.matricule = this.voitureData.matricule;
-    this.item.voiture.boitevitesse = this.voitureData.boitevitesse;
-    this.item.voiture.images = this.voitureData.images;
-    this.item.voiture.Carburant = this.voitureData.Carburant;
-    this.item.voiture.sateVisitetechnique = this.voitureData.sateVisitetechnique;
-    this.item.voiture.puissance = this.voitureData.puissance;
-    this.item.voiture.dateAssurance = this.voitureData.dateAssurance;
-    this.item.voiture.dateMisecirculation = this.voitureData.dateMisecirculation;
-    this.item.voiture.nomModele = this.voitureData.nomModele;
-
-    this.item.client.nom = this.authService.dataUtilisateur.nom;
-    this.item.client.cin = this.authService.dataUtilisateur.cin;
-    this.item.client.numTeleClient = this.authService.dataUtilisateur.numTeleClient;
-    this.item.client.email_Client = this.authService.dataUtilisateur.email_Client;
-    this.item.client.prenom = this.authService.dataUtilisateur.prenom;
-    // this.item.client.id =this.authService.dataUtilisateur.id;
-    console.log("this.item")
-    console.log(this.item)
-    this.saveObject();
-    console.log("this.authService.client.cin===>" + this.authService.dataUtilisateur.cin)
-    // console.log("this.authService.client.id===>"+this.authService.client.id)
-    console.log("this.authService.dataUtilisateur.id===>" + this.authService.dataUtilisateur.id)
-
-
-
-
-    //notifiacation :
-    this.nItem.code =  this.generateRandomCode(5);
-    this.nItem.dateFinReservation=this.datePipe.transform(this.maDate2, 'yyyy-MM-dd')!;
-    this.nItem.dateDebutReservation=this.datePipe.transform(this.maDate, 'yyyy-MM-dd')!;
-    this.nItem.matriculeVoiture = this.voitureData.matricule;
-    this.nItem.cinClient = this.authService.dataUtilisateur.cin;
-    this.nItem.nomClient=this.authService.dataUtilisateur.nom;
-    this.nItem.iceAgence = this.voitureData.agenceLocation.iceAgLoc;
-    this.nItem.nomClient = this.item.client.nom;
-    this.nItem.refReservation=this.item.ref;
-    this.NotificationSave();}
-    else{
-        this.display2=true
-        // this.router.navigateByUrl("/login")
-      }
   }
-
-
-
 
 
   NotificationSave(){

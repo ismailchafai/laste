@@ -211,7 +211,10 @@ public class SafarentApplication {
                     987654L,
                     ConstantApp.logoAgence
             );
-
+            agenceLocationService.save(agenceLocation1);
+            agenceLocationService.save(agenceLocation2);
+            agenceLocationService.save(agenceLocation3);
+            agenceLocationService.save(agenceLocation4);
 
             String sir =
                     "\u001B[32m" +
@@ -278,13 +281,11 @@ public class SafarentApplication {
                     voiture.setCategorieVoiture(categoriesVoitures.get(i));
                     voiture.setAgenceLocation(agenceLocation1);
                     voiture.setImagePaths(images);
+                    voiture.setPrix(200);
                     voitureService.save(voiture);
                 }
             }
-            agenceLocationService.save(agenceLocation1);
-            agenceLocationService.save(agenceLocation2);
-            agenceLocationService.save(agenceLocation3);
-            agenceLocationService.save(agenceLocation4);
+
 
 
             Client client1 = new Client(
